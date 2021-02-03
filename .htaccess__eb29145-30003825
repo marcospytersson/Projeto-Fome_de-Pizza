@@ -1,0 +1,17 @@
+
+# BEGIN WordPress
+# As diretrizes (linhas) entre "BEGIN WordPress" e "END WordPress" são
+# geradas dinamicamente e só devem ser modificadas através de filtros do WordPress.
+# Quaisquer alterações nas diretivas entre esses marcadores serão sobrescritas.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /testewp/
+RewriteRule ^index\.php$ - [L]
+RewriteRule ^^ical/([0-9]+)/? /testewp/http://localhost/testewp/wp-admin/index.php?latepoint_is_custom_route=true&route_name=bookings__ical_downloadlatepoint_booking_id=$matches[1] [QSA,L]
+RewriteRule ^^agent-login/? /testewp/http://localhost/testewp/wp-admin/index.php?latepoint_is_custom_route=true&route_name=agents__login_form [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /testewp/index.php [L]
+</IfModule>
+
+# END WordPress
